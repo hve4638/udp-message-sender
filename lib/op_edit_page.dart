@@ -21,6 +21,7 @@ class OpEditPage extends StatefulWidget {
 class _OpEditPageState extends State<OpEditPage> {
   bool deleted = false;
   late OP op;
+  final TextEditingController _titleController = TextEditingController();
   final TextEditingController _ipController = TextEditingController();
   final TextEditingController _portController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
@@ -30,6 +31,7 @@ class _OpEditPageState extends State<OpEditPage> {
     super.initState();
 
     op = widget.initOP.copy();
+    _titleController.text = op.title;
     _ipController.text = op.ip;
     _portController.text = "${op.port}";
     _messageController.text = op.messageString;
@@ -43,6 +45,7 @@ class _OpEditPageState extends State<OpEditPage> {
 
   void save() {
     if (!deleted) {
+      op.title = _titleController.text;
       op.ip = _ipController.text;
       op.port = int.parse(_portController.text);
       op.messageString = _messageController.text;
@@ -54,8 +57,19 @@ class _OpEditPageState extends State<OpEditPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Edit OP',
+        title: TextField(
+          style: const TextStyle(
+            color: Colors.white,
+          ),
+          decoration: const InputDecoration(
+            enabledBorder: UnderlineInputBorder(
+              borderSide: BorderSide(color: Color(0xffb0b0b0)),
+            ),
+          ),
+          controller: _titleController,
+          onChanged: (value) {
+
+          },
         ),
         actions: [
           IconButton(

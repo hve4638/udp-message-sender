@@ -10,6 +10,7 @@ enum OPMessageType {
 }
 
 class OP {
+  String title = "New Message";
   String ip = "";
   int port = 9;
   String messageString = "";
@@ -18,6 +19,7 @@ class OP {
 
   OP copy() {
     var copied = OP();
+    copied.title = title;
     copied.ip = ip;
     copied.port = port;
     copied.messageString = messageString;
@@ -66,6 +68,7 @@ class OPFile {
     final file = File('${directory.path}/$filename');
 
     var map = <String, dynamic>{
+      "title" : op.title,
       "ip" : op.ip,
       "port" : "${op.port}",
       "messageString" : op.messageString,
@@ -89,6 +92,7 @@ class OPFile {
       final json = jsonDecode(jsonString);
 
       try {
+        op.title = json["title"];
         op.ip = json["ip"];
         op.port = int.parse(json["port"]);
         op.messageType = strToOpMessageType(json["messageType"]);

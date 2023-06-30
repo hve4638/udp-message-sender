@@ -29,7 +29,7 @@ class OpTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("hi",
+                  Text(op.title,
                     style: const TextStyle(
                       color: Colors.white,
                       fontSize : 20,

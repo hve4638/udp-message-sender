@@ -2,7 +2,7 @@
     package="com.example.wol_flutter">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="UDP Sender"
+        android:label="UDP Message"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

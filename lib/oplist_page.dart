@@ -31,9 +31,11 @@ class _OpListPageState extends State<OpListPage> {
       }
     }
 
-    setState(() {
-      opList.removeAt(index);
-    });
+    if (index != -1) {
+      setState(() {
+        opList.removeAt(index);
+      });
+    }
   }
 
   void add(String filename) async {
@@ -46,8 +48,6 @@ class _OpListPageState extends State<OpListPage> {
 
   void update(String filename, OP op) async {
     await Future.delayed(const Duration(milliseconds: 100));
-    print("Send");
-    print("- ${op.ip}:${op.port} '${op.messageString}'");
 
     var size = opList.length;
     var index = -1;
@@ -58,9 +58,11 @@ class _OpListPageState extends State<OpListPage> {
       }
     }
 
-    setState(() {
-      opList[index] = OPInfo(filename, op);
-    });
+    if (index != -1) {
+      setState(() {
+        opList[index] = OPInfo(filename, op);
+      });
+    }
   }
 
   @override
